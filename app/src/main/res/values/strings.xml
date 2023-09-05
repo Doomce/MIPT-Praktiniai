@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">MIPT1</string>
-    <string name="textview">TextView</string>
-    <string name="clickme">ClickME!</string>
+    <string name="Type_Label">Skaičiavimo tipas:</string>
+    <string name="calculate">Skaičiuoti</string>
+    <string name="TextBox_Label">Įveskite tekstą</string>
+    <string name="word_count">"Žodžių skaičius: "</string>
+    <string name="symbols_count">"Sakinių skaičius: "</string>
+    <string name="text_empty_err">Teksto laukas negali būti tuščias.</string>
 </resources>
