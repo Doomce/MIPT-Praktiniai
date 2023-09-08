@@ -4,6 +4,6 @@
     <string name="calculate">Skaičiuoti</string>
     <string name="TextBox_Label">Įveskite tekstą</string>
     <string name="word_count">"Žodžių skaičius: "</string>
-    <string name="symbols_count">"Sakinių skaičius: "</string>
+    <string name="symbols_count">"Raidžių skaičius: "</string>
     <string name="text_empty_err">Teksto laukas negali būti tuščias.</string>
 </resources>
