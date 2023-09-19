@@ -63,13 +63,16 @@ public class CalculatorLogic {
     public static String performCalculation() {
         if (CalculatorContent.isEmpty()) return "Klaida";
         Pair<double[], ArithmeticOperation> parsedExpression;
+        double answer;
+
         try {
             parsedExpression = textToMathExpression(CalculatorContent);
-        } catch (IndexOutOfBoundsException ex) {
+            answer = parsedExpression.second.calculate(parsedExpression.first);
+        } catch (IndexOutOfBoundsException | ArithmeticException | NullPointerException ex) {
             CalculatorContent = "";
             return "Klaida";
         }
-        double answer = parsedExpression.second.calculate(parsedExpression.first);
+
         CalculatorContent += "=";
         return String.valueOf(answer);
     }

@@ -1,9 +1,6 @@
 package com.dom.mipt3.calculator;
 
 import android.widget.TextView;
-import com.dom.mipt3.MainActivity;
-import com.dom.mipt3.calculator.operations.ArithmeticOperation;
-import com.dom.mipt3.calculator.operations.Plus;
 
 public class CalculatorScreenManagement {
 
@@ -54,6 +51,7 @@ public class CalculatorScreenManagement {
 
     public void backspace() {
         String text = getBottomScreenText();
+        if (text.equalsIgnoreCase("klaida")) return;
         if (text.isEmpty()) return;
         text = new StringBuilder(text).deleteCharAt(text.length()-1).toString();
         setBottomScreenText(text);

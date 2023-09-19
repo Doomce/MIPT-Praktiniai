@@ -6,12 +6,11 @@ import com.dom.mipt3.R;
 import com.dom.mipt3.calculator.operations.ArithmeticOperation;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 
 public class CalculatorButtonManagement {
 
-    private CalculatorScreenManagement ScreenInstance;
+    private final CalculatorScreenManagement ScreenInstance;
 
     public CalculatorButtonManagement(CalculatorScreenManagement instance) {
         ScreenInstance = instance;
@@ -22,6 +21,7 @@ public class CalculatorButtonManagement {
             CalculatorLogic.clearContent();
             ScreenInstance.setTopScreenText("");
         }
+        if (ScreenInstance.getBottomScreenText().equalsIgnoreCase("klaida")) ScreenInstance.setBottomScreenText("");
         ScreenInstance.appendBottomScreenText(String.valueOf(digit));
     }
 
@@ -48,7 +48,7 @@ public class CalculatorButtonManagement {
             ScreenInstance.setBottomScreenText("");
             ScreenInstance.updateTopScreenText();
             return;
-        };
+        }
 
         if (lastOperation != null && lastOperation.equals(operation)) return;
         if (bottomText.isEmpty()) {
@@ -115,6 +115,13 @@ public class CalculatorButtonManagement {
         for (Button btn: functionButtons) {
             for (ArithmeticOperation operation: CalculatorLogic.LoadedOperationList) {
                 if (!operation.operationSymbol().contentEquals(btn.getTag().toString())) continue;
+                if (operation.numCount() == 1) {
+                    btn.setOnClickListener((event) -> {
+                        onFunctionKeyPress(operation);
+                        onEqualBtnClick();
+                    });
+                    continue;
+                }
                 btn.setOnClickListener((event) -> onFunctionKeyPress(operation));
             }
         }
