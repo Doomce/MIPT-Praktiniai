@@ -1,12 +1,10 @@
 package com.dom.mipt4;
 
 import android.content.Intent;
-import android.util.Log;
-import android.util.Pair;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.dom.mipt4.database.NoteDao;
 import com.dom.mipt4.database.NotesDatabase;
 import com.dom.mipt4.objects.Note;

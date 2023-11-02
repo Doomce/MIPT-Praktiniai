@@ -1,11 +1,11 @@
 package com.dom.mipt4;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.dom.mipt4.database.NoteDao;
 import com.dom.mipt4.database.NotesDatabase;
 import com.dom.mipt4.elements.NoteElement;
@@ -14,7 +14,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.NoSuchElementException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             List<Note> notes = new ArrayList<>(dao.getAllNotes().blockingFirst());
-            //List<Note> notes = new ArrayList<>();
-            //notes.add(new Note("SSS", "SSSs"));
             writeNotesUi(notes);
-        } catch (NullPointerException | AssertionError ex) {
+        } catch (NullPointerException | AssertionError | NoSuchElementException ex) {
             Log.d("NOTES", "EMPTY");
             writeNotesUi(null);
         }

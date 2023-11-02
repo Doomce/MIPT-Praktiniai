@@ -8,7 +8,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.dom.mipt4.AddNoteActivity;
-import com.dom.mipt4.MainActivity;
 import com.dom.mipt4.R;
 import com.dom.mipt4.objects.Note;
 
