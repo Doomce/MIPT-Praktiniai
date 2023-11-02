@@ -7,7 +7,6 @@
     <string name="name">Pavadinimas</string>
     <string name="text_box_description">Jūsų užrašai</string>
     <string name="save_changes">Išsaugoti</string>
-    <string name="delete">Pašalinti</string>
 
 
     <string name="invalid_title">Klaida</string>
@@ -16,4 +15,5 @@
 
     <string name="valid_title">Sėkminga</string>
     <string name="valid_note">Jūsų užrašas išsaugotas!</string>
+    <string name="deleteText">Ištrinti pasirinktą užrašą</string>
 </resources>

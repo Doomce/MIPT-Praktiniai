@@ -8,6 +8,7 @@ import androidx.room.Query;
 import com.dom.mipt4.objects.Note;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public interface NoteDao {
 
     @Query("SELECT * FROM note")
-    Single<List<Note>> getAllNotes();
+    Observable<List<Note>> getAllNotes();
 
     @Query("SELECT * FROM note WHERE note.id IS (:noteId)")
     Flowable<Note> loadById(int noteId);
@@ -24,7 +25,7 @@ public interface NoteDao {
     @Insert
     Completable insertAll(Note... notes);
 
-    @Delete
-    Completable  delete(Note note);
+    @Query("DELETE FROM note WHERE note.id IS (:noteId)")
+    Completable delete(int noteId);
 
 }

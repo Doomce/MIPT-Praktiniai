@@ -1,18 +1,14 @@
 package com.dom.mipt4;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.dom.mipt4.database.NotesRepository;
+import com.dom.mipt4.database.NoteDao;
+import com.dom.mipt4.database.NotesDatabase;
 import com.dom.mipt4.elements.Alert;
 import com.dom.mipt4.objects.Note;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class AddNoteActivity extends AppCompatActivity {
 
@@ -26,13 +22,15 @@ public class AddNoteActivity extends AppCompatActivity {
         backBtn.setOnClickListener((event) -> backToMainActivity());
 
         if (createdNoteId  < 0) {
-            Button saveBtn = findViewById(R.id.saveBtn);
+            Button saveBtn = findViewById(R.id.deleteBtn);
             saveBtn.setOnClickListener((event) -> saveNoteBtnAction());
             return;
         }
 
-        NotesRepository repo = new NotesRepository(getApplication());
-        setupForShow(repo.getById(createdNoteId));
+        NoteDao dao = NotesDatabase.getDatabase(this).noteDao();
+        Note note = dao.loadById(createdNoteId).blockingFirst();
+
+        setupForShow(note);
     }
 
     private void saveNoteBtnAction() {
@@ -49,13 +47,14 @@ public class AddNoteActivity extends AppCompatActivity {
             return;
         }
 
-        NotesRepository repo = new NotesRepository(getApplication());
-        repo.insert(new Note(name.getText().toString(), desc.getText().toString()));
+        NoteDao dao = NotesDatabase.getDatabase(this).noteDao();
+        NotesDatabase.databaseActionsExecutor.execute(() -> {
+            dao.insertAll(new Note(name.getText().toString(), desc.getText().toString())).blockingAwait();
+        });
+
         Toast.makeText(this, getString(R.string.valid_note), Toast.LENGTH_SHORT).show();
         backToMainActivity();
-
     }
-
 
     private void backToMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
@@ -70,9 +69,9 @@ public class AddNoteActivity extends AppCompatActivity {
         name.setEnabled(false);
 
         EditText description = findViewById(R.id.addNoteDescription);
-        description.setText(note.getName());
+        description.setText(note.getText());
         description.setEnabled(false);
 
-        findViewById(R.id.saveBtn).setVisibility(View.INVISIBLE);
+        findViewById(R.id.deleteBtn).setVisibility(View.INVISIBLE);
     }
 }

@@ -1,7 +1,9 @@
 package com.dom.mipt4.objects;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import org.jetbrains.annotations.NotNull;
 
 @Entity
 public class Note {
@@ -42,4 +44,10 @@ public class Note {
         this.id = id;
     }
 
+    @NonNull
+    @NotNull
+    @Override
+    public String toString() {
+        return name;
+    }
 }
