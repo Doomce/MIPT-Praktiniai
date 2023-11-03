@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MIPT4"
+rootProject.name = "MIPT5"
 include(":app")
  
