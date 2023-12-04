@@ -28,11 +28,23 @@ public class CalculatorButtonManagement {
     private void onKeyPress(String btnName) {
         switch (btnName) {
             case "clear" -> ScreenInstance.setBottomScreenText("");
-            case "comma" -> ScreenInstance.appendBottomScreenText(".");
+            case "comma" -> onCommaPress();
             case "backspace" -> ScreenInstance.backspace();
             case "plusminus" -> ScreenInstance.changeSign();
             case "clearEverything" -> ScreenInstance.clearScreens();
         }
+    }
+
+    private void onCommaPress() {
+        if (ScreenInstance.getBottomScreenText().equalsIgnoreCase("klaida")) {
+            CalculatorLogic.clearContent();
+            ScreenInstance.clearScreens();
+        }
+        if (ScreenInstance.getBottomScreenText().isEmpty()) {
+            ScreenInstance.appendBottomScreenText("0.");
+            return;
+        }
+        ScreenInstance.appendBottomScreenText(".");
     }
 
     private void onFunctionKeyPress(ArithmeticOperation operation) {

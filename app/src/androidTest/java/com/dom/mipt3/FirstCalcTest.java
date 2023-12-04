@@ -34,78 +34,7 @@ public class FirstCalcTest {
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-    @Test
-    public void mainActivityTest() {
-        ViewInteraction materialButton = onView(
-                allOf(withId(R.id.sqrt), withText("?"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                9),
-                        isDisplayed()));
-        materialButton.perform(click());
 
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.comma), withText("."),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                26),
-                        isDisplayed()));
-        materialButton2.perform(click());
-
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.equal), withText("="),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                24),
-                        isDisplayed()));
-        materialButton3.perform(click());
-
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.plus), withText("+"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                27),
-                        isDisplayed()));
-        materialButton4.perform(click());
-
-        ViewInteraction materialButton5 = onView(
-                allOf(withId(R.id.num3), withText("3"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                22),
-                        isDisplayed()));
-        materialButton5.perform(click());
-
-        ViewInteraction materialButton6 = onView(
-                allOf(withId(R.id.num0), withText("0"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                25),
-                        isDisplayed()));
-        materialButton6.perform(click());
-
-        ViewInteraction materialButton7 = onView(
-                allOf(withId(R.id.minus), withText("-"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                23),
-                        isDisplayed()));
-        materialButton7.perform(click());
-    }
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {

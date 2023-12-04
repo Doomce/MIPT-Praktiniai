@@ -24,16 +24,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void onNumberKeyPress(int digit) {
-
-    }
-
-
-    private void initButtons() {
-
-
-    }
-
-
-
 }
