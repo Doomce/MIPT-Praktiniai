@@ -1,6 +1,6 @@
 # MIPT PRAKTINIAI DARBAI
 
-Studijų modulyje mobiliųjų įrenginių programavimo technologijos reikėjo sukurti penkias android aplikacijas. Aplikacijų vystumui pasirinkta JAVA programavimo kalba.
+Studijų modulyje mobiliųjų įrenginių programavimo technologijos reikėjo sukurti penkias android aplikacijas. Aplikacijų vystymui pasirinkta JAVA programavimo kalba.
 
 
 ## 5 Praktiniai darbai:
